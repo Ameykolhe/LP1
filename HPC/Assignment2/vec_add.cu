@@ -42,8 +42,8 @@ void vec_add() {
 
     // initialize host variables
     for(int i = 0; i < VEC_SIZE; i++) {
-        a_host[i] = 1024*1024 * float(rand())/RAND_MAX;
-        b_host[i] = 1024*1024 * float(rand())/RAND_MAX;
+        a_host[i] = 1.0f ;//1024*1024 * float(rand())/RAND_MAX;
+        b_host[i] = 1.0f ;//1024*1024 * float(rand())/RAND_MAX;
     }
     
 

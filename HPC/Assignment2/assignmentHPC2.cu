@@ -9,7 +9,6 @@ int main() {
 
     cout<<"\n\n--------------------------- RESULTS -------------------------------\n"<<endl;
 
-    /*
     // Vector Addition on CPU & GPU
     cout<<"\n\n--------------------------- VECT ADD\n\n"<<endl;
     vec_add();
@@ -18,7 +17,7 @@ int main() {
     // Matrix Vector Multiplication on CPU & GPU
     cout<<"\n\n--------------------------- MAT VECT MUL\n\n"<<endl;
     mat_vec_mul();
-    */
+
 
     // Matrix Multiplication
     cout<<"\n\n--------------------------- MAT MUL\n\n"<<endl;

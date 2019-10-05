@@ -15,9 +15,9 @@ Matrix C Size : A x C
 
 */
 
-#define A 3
-#define B 2
-#define C 4
+#define A 512
+#define B 1024
+#define C 512
 
 #define BLOCKSIZE 16
 
@@ -63,11 +63,11 @@ void mat_mul() {
 
     // initialize host variables
     for(int i = 0; i < A*B; i++) {
-        a_host[i] = 1 ;//1024*1024 * float(rand())/RAND_MAX;
+        a_host[i] = 1.0f ;//1024*1024 * float(rand())/RAND_MAX;
     }
 
     for(int i = 0; i < B*C; i++) {
-        b_host[i] = 1 ;//1024*1024 * float(rand())/RAND_MAX;
+        b_host[i] = 1.0f ;//1024*1024 * float(rand())/RAND_MAX;
     }
 
 
@@ -110,10 +110,10 @@ void mat_mul() {
     cudaMemset(c_device, 2, A * C * sizeof(float));
 
     // set up timing variables
-	float gpu_elapsed_time;
-	cudaEvent_t gpu_start, gpu_stop;
+    float gpu_elapsed_time;
+    cudaEvent_t gpu_start, gpu_stop;
 
-	cudaEventCreate(&gpu_start);
+    cudaEventCreate(&gpu_start);
     cudaEventCreate(&gpu_stop);
     
     // call kernel
