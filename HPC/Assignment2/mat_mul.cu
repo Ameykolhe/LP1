@@ -15,9 +15,9 @@ Matrix C Size : A x C
 
 */
 
-#define A 512
-#define B 1024
-#define C 512
+#define A 4096
+#define B 2048
+#define C 1024
 
 #define BLOCKSIZE 16
 
@@ -72,6 +72,11 @@ void mat_mul() {
 
 
 
+    cout<<"INPUT SIZE "<<endl;
+    cout<<"Matrix A : "<<A<<" * "<<B<<endl;
+    cout<<"Matrix B : "<<B<<" * "<<C<<endl;
+    
+
     // ----------------------------------------- CPU Code -------------------------------------------------
     memset(c_host, 0, A * C * sizeof(float));
 
@@ -81,10 +86,10 @@ void mat_mul() {
     auto stopCPU = high_resolution_clock::now();
 
     // Display Results
-    cout<<"--------------- CPU ---------------\n"<<endl;
+    cout<<"\n\n--------------- CPU ---------------\n"<<endl;
     cout<<"Answer CPU : \n"<<endl;
-    for(int i = 0; i < A; i++) {
-        for(int j = 0; j < C; j++) {
+    for(int i = 0; i < 5; i++) {
+        for(int j = 0; j < 5; j++) {
             cout<<c_host[i*A + j]<<" ";
         }
         cout<<endl;
@@ -143,8 +148,8 @@ void mat_mul() {
     // Display Results
     cout<<"--------------- GPU ---------------\n"<<endl;
     cout<<"Answer GPU : \n"<<endl;
-    for(int i = 0; i < A; i++) {
-        for(int j = 0; j < C; j++) {
+    for(int i = 0; i < 5; i++) {
+        for(int j = 0; j < 5; j++) {
             cout<<c_host[i*A + j]<<" ";
         }
         cout<<endl;
@@ -159,11 +164,4 @@ void mat_mul() {
     cudaFree(b_device);
     cudaFree(c_device);
 
-}
-
-int main() {
-
-    mat_mul();
-
-    return 0;
 }

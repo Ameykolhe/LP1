@@ -69,6 +69,11 @@ void mat_vec_mul() {
     }
 
 
+    cout<<"INPUT SIZE "<<endl;
+    cout<<"Matrix A : "<<M<<" * "<<N<<endl;
+    cout<<"Vector B : "<<N<<" * "<<1<<endl;
+   
+
 
     // ----------------------------------------- CPU Code -------------------------------------------------
     memset(c_host, 0, M * sizeof(float));
@@ -79,7 +84,7 @@ void mat_vec_mul() {
     auto stopCPU = high_resolution_clock::now();
 
     // Display Results
-    cout<<"--------------- CPU ---------------\n"<<endl;
+    cout<<"\n\n--------------- CPU ---------------\n"<<endl;
     cout<<"Answer CPU : \n"<<endl;
     for(int i = 0; i < 5; i++) {
         cout<<c_host[i]<<endl;

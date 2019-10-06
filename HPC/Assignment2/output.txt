@@ -1,0 +1,166 @@
+PS D:\BE\LP1\HPC\Assignment2> .\compile.bat
+
+D:\BE\LP1\HPC\Assignment2>nvcc -c vec_add.cu -o vec_add.obj
+vec_add.cu
+
+D:\BE\LP1\HPC\Assignment2>nvcc -c mat_vec_mul.cu -o mat_vec_mul.obj
+mat_vec_mul.cu
+
+D:\BE\LP1\HPC\Assignment2>nvcc -c mat_mul.cu -o mat_mul.obj
+mat_mul.cu
+
+D:\BE\LP1\HPC\Assignment2>nvcc -c assignmentHPC2.cu -o assignmentHPC2.obj
+assignmentHPC2.cu
+
+D:\BE\LP1\HPC\Assignment2>nvcc assignmentHPC2.obj vec_add.obj mat_vec_mul.obj mat_mul.obj -o main
+assignmentHPC2.obj
+vec_add.obj
+mat_vec_mul.obj
+mat_mul.obj
+   Creating library main.lib and object main.exp
+
+
+
+PS D:\BE\LP1\HPC\Assignment2> .\main.exe
+
+
+--------------------------- RESULTS -------------------------------
+
+
+
+--------------------------- VECT ADD
+
+
+INPUT SIZE 
+Vector A : 387973120 * 1
+
+
+--------------- CPU ---------------
+
+Answer CPU :
+
+1 + 1 = 2
+1 + 1 = 2
+1 + 1 = 2
+1 + 1 = 2
+1 + 1 = 2
+
+Time on CPU : 1888 milli seconds
+
+
+--------------- GPU ---------------
+
+Answer GPU :
+
+1 + 1 = 2
+1 + 1 = 2
+1 + 1 = 2
+1 + 1 = 2
+1 + 1 = 2
+
+Time on GPU : 0.029952 milli seconds
+
+
+
+
+--------------------------- MAT VECT MUL
+
+
+INPUT SIZE 
+Matrix A : 1048576 * 1024
+Vector B : 1024 * 1      
+
+
+--------------- CPU ---------------
+
+Answer CPU : 
+
+1024
+1024
+1024
+1024
+1024
+
+Time on CPU : 3433 milli seconds
+
+
+--------------- GPU ---------------
+
+Answer GPU :
+
+1024
+1024
+1024
+1024
+1024
+
+Time on GPU : 439.836 milli seconds
+
+
+
+
+--------------------------- MAT MUL
+
+
+INPUT SIZE
+Matrix A : 4096 * 2048
+Matrix B : 2048 * 1024
+
+
+--------------- CPU ---------------
+
+Answer CPU :
+
+2048 2048 2048 2048 2048
+2048 2048 2048 2048 2048
+2048 2048 2048 2048 2048
+2048 2048 2048 2048 2048
+2048 2048 2048 2048 2048
+
+Time on CPU : 137504 milli seconds
+
+
+--------------- GPU ---------------
+
+Answer GPU :
+
+2048 2048 2048 2048 2048
+2048 2048 2048 2048 2048
+2048 2048 2048 2048 2048
+2048 2048 2048 2048 2048
+2048 2048 2048 2048 2048
+
+Time on GPU : 406.929 milli seconds
+
+
+PS D:\BE\LP1\HPC\Assignment2> nvprof .\main.exe
+
+==19900== Profiling application: .\main.exe
+==19900== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   41.40%  1.37575s         6  229.29ms     832ns  809.54ms  [CUDA memcpy HtoD]
+                   33.02%  1.09735s         3  365.78ms  1.6162ms  1.08448s  [CUDA memcpy DtoH]
+                   13.27%  440.82ms         1  440.82ms  440.82ms  440.82ms  mat_vec_mul_kernel(float*, float*, float*)
+                   12.31%  408.95ms         1  408.95ms  408.95ms  408.95ms  mat_mul_kernel(float*, float*, float*)
+                    0.00%  32.224us         1  32.224us  32.224us  32.224us  vec_add_kernel(float*, float*, float*)
+                    0.00%  1.5040us         2     752ns     480ns  1.0240us  [CUDA memset]
+      API calls:   49.21%  2.49287s         9  276.99ms  232.30us  1.08582s  cudaMemcpy
+                   29.18%  1.47807s         9  164.23ms  728.30us  919.04ms  cudaMalloc
+                   16.79%  850.67ms         3  283.56ms  262.10us  440.96ms  cudaEventSynchronize
+                    3.52%  178.51ms         9  19.835ms  222.00us  80.309ms  cudaFree
+                    1.25%  63.505ms         1  63.505ms  63.505ms  63.505ms  cuDevicePrimaryCtxRelease
+                    0.02%  940.30us         4  235.08us  19.000us  324.80us  cuModuleUnload
+                    0.01%  425.30us        96  4.4300us     100ns  216.60us  cuDeviceGetAttribute
+                    0.00%  200.40us         1  200.40us  200.40us  200.40us  cuDeviceGetPCIBusId
+                    0.00%  80.400us         3  26.800us  13.100us  49.900us  cudaLaunchKernel
+                    0.00%  78.900us         2  39.450us  37.100us  41.800us  cudaMemset
+                    0.00%  74.800us         3  24.933us  17.000us  36.700us  cudaEventElapsedTime
+                    0.00%  44.900us         1  44.900us  44.900us  44.900us  cuDeviceTotalMem
+                    0.00%  39.600us         6  6.6000us     900ns  24.000us  cudaEventCreate
+                    0.00%  30.900us         8  3.8620us     400ns  17.500us  cudaEventDestroy
+                    0.00%  15.600us         6  2.6000us  1.1000us  4.7000us  cudaEventRecord
+                    0.00%  2.2000us         3     733ns     200ns  1.0000us  cuDeviceGetCount
+                    0.00%  1.5000us         2     750ns     300ns  1.2000us  cuDeviceGet
+                    0.00%     800ns         1     800ns     800ns     800ns  cuDeviceGetName
+                    0.00%     400ns         1     400ns     400ns     400ns  cuDeviceGetLuid
+                    0.00%     300ns         1     300ns     300ns     300ns  cuDeviceGetUuid

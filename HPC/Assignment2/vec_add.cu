@@ -47,6 +47,8 @@ void vec_add() {
     }
     
 
+    cout<<"INPUT SIZE "<<endl;
+    cout<<"Vector A : "<<VEC_SIZE<<" * "<<1<<endl;
 
 
     // ----------------------------------------- CPU Code -------------------------------------------------
@@ -58,7 +60,7 @@ void vec_add() {
     auto stopCPU = high_resolution_clock::now();
 
     // Display Results
-    cout<<"--------------- CPU ---------------\n"<<endl;
+    cout<<"\n\n--------------- CPU ---------------\n"<<endl;
     cout<<"Answer CPU : \n"<<endl;
     for(int i = 0; i < 5; i++) {
         cout<<a_host[i]<<" + "<<b_host[i]<<" = "<<c_host[i]<<endl;
