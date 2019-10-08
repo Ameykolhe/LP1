@@ -7,7 +7,7 @@
 using namespace std;
 using namespace std::chrono;
 
-#define VEC_SIZE 1024*1024*370
+#define VEC_SIZE 1024*1024*256
 
 
 __global__ void vec_add_kernel(float *a, float *b, float *c) {
