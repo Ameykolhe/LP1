@@ -1,0 +1,12 @@
+Hadoop Setup Linux
+
+    1. Download Hadoop Tar file from https://drive.google.com/open?id=1RlKHKWG97tE9-8KmELojA-U3pGbgYZg3
+    2. cd /path/to/Downloads
+    3. sudo apt install p7zip-full
+    4. 7z  -x Hadoop.tar
+    5. cd ./Hadoop
+    6. ./setup_hadoop.sh
+
+RUN Assignment
+
+    1. ./run.sh

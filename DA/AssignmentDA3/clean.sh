@@ -1,0 +1,1 @@
+rm -rf MRDir/ *.class *.jar
