@@ -27,8 +27,8 @@ int* parallel_bubble_sort(int arr[], int n)
 {
 	bool fl = true;
 	for( int i = 0; i < n; i++ )
-	 {
-	 	//cout<<"Iter : "<<i<<endl;
+	{
+	 	// cout<<"Iter : "<<i<<endl;
 		int first = i % 2;
 		#pragma omp parallel for shared(arr,first)
 		for( int j = first; j < n-1; j += 2 )
@@ -101,41 +101,67 @@ void parallel_merge_sort(int a[], int l, int r)
 int main()
 {
 	int n;
-	n = rand()%1000000 + 100000;
+	n = 100000;
 	int arr[n];
 	int temp[n];
 	
 	cout<<"N : "<<n<<endl;;
-	
+
 	
 	#pragma omp parallel for shared(arr,n)
 	for(int i=0;i<n;i++){
 		arr[i] = rand()%10000000;
 	}
-	
-	
+
 	double start,end;
-	//Parallel Bubble Sort
+
+	//--------------------------- Serial Bubble Sort ---------------------------
+
+	#pragma omp parallel for shared(temp,arr,n)
+	for(int i=0;i<n;i++){
+		temp[i] = arr[i];
+	}
+
+	cout<<"\n\nArray init Serial bubble\n"<<endl;
+
+	start = omp_get_wtime();
+	int* result = serial_bubble_sort(temp,n);
+	end = omp_get_wtime();
+	
+	cout<<"Result : ";
+	
+	for(int i=0;i<10;i++){
+		cout<<temp[i]<<" ";
+	}
+	cout<<endl<<endl;
+	
+	cout<<"Time parallel bubble sort : "<< end-start <<" Seconds"<<endl;
+
+
+	//--------------------------- Parallel Bubble Sort ---------------------------
+
+
 	#pragma omp parallel for shared(temp,arr,n)
 	for(int i=0;i<n;i++){
 		temp[i] = arr[i];
 	}
 	
-	cout<<"Array init parallel bubble"<<endl;
+	cout<<"\n\nArray init parallel bubble\n"<<endl;
 	
 	start = omp_get_wtime();
-	int* result = parallel_bubble_sort(temp,n);
+	result = parallel_bubble_sort(temp,n);
 	end = omp_get_wtime();
 	
-	
+	cout<<"Result : ";
+
 	for(int i=0;i<10;i++){
 		cout<<temp[i]<<" ";
 	}
-	cout<<endl;
+	cout<<endl<<endl;
 	
-	cout<<"Time parallel bubble sort : "<< end-start <<endl;
+	cout<<"Time parallel bubble sort : "<< end-start <<" Seconds"<<endl;
 	
-	//Parallel Merge Sort
+	//--------------------------- Parallel Merge Sort ---------------------------
 	
 	int* temp_arr = new int[n];
 	
@@ -144,20 +170,22 @@ int main()
 		temp[i] = arr[i];
 	}
 	
-	cout<<"Array init parallel merge"<<endl;
+	cout<<"\n\nArray init parallel merge\n"<<endl;
 	
 	start = omp_get_wtime();
 	parallel_merge_sort(temp, 0, n-1);
 	end = omp_get_wtime();
+
+	cout<<"Result : ";
 	
 	for(int i=0;i<10;i++){
 		cout<<temp[i]<<" ";
 	}
-	cout<<endl;
+	cout<<endl<<endl;
 	
-	cout<<"Time parallel Merge sort  : "<< end-start <<endl;
+	cout<<"Time parallel Merge sort  : "<< end-start <<" Seconds"<<endl;
 	
-	//Serial Merge Sort
+	//--------------------------- Serial Merge Sort ---------------------------
 	
 	temp_arr = new int[n];
 	
@@ -166,18 +194,20 @@ int main()
 		temp[i] = arr[i];
 	}
 	
-	cout<<"Array init serial merge"<<endl;
+	cout<<"\n\nArray init serial merge\n"<<endl;
 	
 	start = omp_get_wtime();
 	serial_merge_sort(temp, 0, n-1);
 	end = omp_get_wtime();
 	
+	cout<<"Result : ";
+
 	for(int i=0;i<10;i++){
 		cout<<temp[i]<<" ";
 	}
-	cout<<endl;
+	cout<<endl<<endl;
 	
-	cout<<"Time serial Merge sort    : "<< end-start <<endl;
+	cout<<"Time serial Merge sort    : "<< end-start <<" Seconds"<<endl;
 	
 	return 0;
 }

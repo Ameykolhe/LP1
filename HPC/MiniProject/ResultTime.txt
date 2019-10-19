@@ -1,0 +1,74 @@
+File = autumn_forest_waterfall_4k_8k-7680x4320.jpg
+
+        Shape =  (4320, 7680, 3)
+
+        Time on CPU :  275.0594  mili seconds
+        Time on GPU :  3.5528318881988525  mili seconds
+
+File = beautiful_lake_landscape_scenery_4k_8k-7680x4320.jpg
+
+        Shape =  (4320, 7680, 3)
+
+        Time on CPU :  261.3405000000002  mili seconds
+        Time on GPU :  3.5543038845062256  mili seconds
+
+File = blue_mountains_landscape_4k_8k-7680x4320.jpg
+
+        Shape =  (4320, 7680, 3)
+
+        Time on CPU :  256.06740000000093  mili seconds
+        Time on GPU :  3.5393600463867188  mili seconds
+
+File = foggy_forest_4k_8k-7680x4320.jpg
+
+        Shape =  (4320, 7680, 3)
+
+        Time on CPU :  254.45350000000033  mili seconds
+        Time on GPU :  3.524768114089966  mili seconds
+
+File = game_cgi_landscape_4k_8k-7680x4320.jpg
+
+        Shape =  (4320, 7680, 3)
+
+        Time on CPU :  255.12409999999974  mili seconds
+        Time on GPU :  3.5287039279937744  mili seconds
+
+File = golden_gate_bridge_at_night_4k_8k-7680x4320.jpg
+
+        Shape =  (4320, 7680, 3)
+
+        Time on CPU :  256.6631999999984  mili seconds
+        Time on GPU :  3.537087917327881  mili seconds
+
+File = iphone_x_gradient_4k_8k-7680x4320.jpg
+
+        Shape =  (4320, 7680, 3)
+
+        Time on CPU :  253.5273999999994  mili seconds
+        Time on GPU :  3.555327892303467  mili seconds
+
+File = sunrise_horizon_earth_4k_8k-7680x4320.jpg
+
+        Shape =  (4320, 7680, 3)
+
+        Time on CPU :  255.59790000000504  mili seconds
+        Time on GPU :  3.5405120849609375  mili seconds
+
+File = sunset_landscape_4k_8k-7680x4320.jpg
+
+        Shape =  (4320, 7680, 3)
+
+        Time on CPU :  254.8681999999971  mili seconds
+        Time on GPU :  3.5267839431762695  mili seconds
+
+File = sunset_sky_reflections_4k_8k-7680x4320.jpg
+
+        Shape =  (4320, 7680, 3)
+
+        Time on CPU :  256.6636000000031  mili seconds
+        Time on GPU :  3.5440640449523926  mili seconds
+
+
+Total time CPU : 2579.3652000000043 mili Seconds
+
+Total time GPU : 35.403743743896484 mili Seconds
